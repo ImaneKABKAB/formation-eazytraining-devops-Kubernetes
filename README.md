@@ -1,7 +1,7 @@
 # 😃Hi this is a simple presentation of my work during my 1st month of Eazy-Training DevOps bootcamp😃
 
-I create this repository to map my progress during the first month of the bootcamp(September 2022 to November 2022). It is a sort of proof of work. 
-This repo will contain some Docker labs i did and a Docker mini project which i realised at the end of the first month.
+I create this repository to map my progress during the second month of the bootcamp(September 2022 to November 2022). It is a sort of proof of work. 
+This repo will contain some k8s labs i did and a Kubernetes mini project which i realised at the end of the second month.
 
 
 # 👩A quick presentation of me and my cursus👩
