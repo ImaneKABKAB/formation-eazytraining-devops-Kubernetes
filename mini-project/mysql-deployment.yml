@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  namespace: wordpress-mysql
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: wordpress-db
+  template:
+    metadata:
+      labels:
+        app: wordpress-db
+    spec:
+      containers:
+       - name: mysql
+         image: mysql
+         ports:
+          - containerPort: 3306
+         env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: wordpress-secret
+                key: mysql_root_password
+          - name: MYSQL_DATABASE
+            value: wordpress
+          - name: MYSQL_USER
+            value: imane
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: wordpress-secret
+                key: mysql_password
+         volumeMounts:
+           - mountPath: /var/lib/mysql
+             name: mysql-data
+      volumes:
+       - name: mysql-data
+         hostPath:
+           path: /data/mysql
+           type: Directory
