@@ -1,8 +1,12 @@
 #  🧾Project theme
 -A travers ce projet , on vise à réaliser un cluster K8s mono-node pour déployer une application 2 tiers avec wordpress et mysql .
+
 -On doit :
+
 ✔ Assurer la communication entre les 2 tiers à travers des services.
+
  ✔ Assurer la persistance des données du cluster.
+ 
  ✔ Sécuriser les données avec les objets secrets de K8s.
 
 -Le schéma suivant présente le cluster :
@@ -29,71 +33,31 @@
  1. Pour exposer le pod mysql à l'intérieur du cluster 
  2. Rendre le pod joignable à travers le port 3306 du service dirigeant vers le port 3306 du pod mysql .
  Voici une description du service implémenté:
+ 
+![private](https://github.com/ImaneKABKAB/formation-eazytraining-devops-Kubernetes/blob/main/mini-project/image/word9.png)
  Au niveau du champs **Endpoint** ,on voit bien que le service détecte l'@ IP du pod .
  - Service **NodePort**:
-  
-
- 
-
-
-
-## Export a file
+  1. Pour exposer le pod wordpress à l'extérieur du cluster.
+  2. Rendre le pod accessible à l'utilisateur à travers le port 30008 dirigeant vers le port 80 du pod wordpress.
+Voici une description du service implémenté:
+ ![private](https://github.com/ImaneKABKAB/formation-eazytraining-devops-Kubernetes/blob/main/mini-project/image/word8.png)
+Au niveau du champs **Endpoint** ,on voit bien que le service détecte l'@ IP du pod .
 
 
+# Persistance des données
+-On utilise un stockage local avec des volumes crées au niveau du node: **/data/mysql** et **/data/wordpress** .
+-On monte les 2 volumes respectivement aux paths : **/var/lib/mysql** et **/var/www/html** aux niveau des conteneurs .
+-On voit bien que les données sont stockées dans les volumes crées :
+![private](https://github.com/ImaneKABKAB/formation-eazytraining-devops-Kubernetes/blob/main/mini-project/image/word10.png)
 
-
-# Synchronization
-
-
-
-## Open a file
+![private](https://github.com/ImaneKABKAB/formation-eazytraining-devops-Kubernetes/blob/main/mini-project/image/word11.png)
 
 
 
-## Save a file
+#  Test et résultat
+-Pour tester , on se rend à l'@ IP du nœud et on précise le port 3OOO8.
+![private](https://github.com/ImaneKABKAB/formation-eazytraining-devops-Kubernetes/blob/main/mini-project/image/word1.PNG)
 
+![private](https://github.com/ImaneKABKAB/formation-eazytraining-devops-Kubernetes/blob/main/mini-project/image/word3.PNG)
 
-
-## Synchronize a file
-
-
-
-## Manage file synchronization
-
-
-
-
-# Publication
-
-
-
-## Publish a File
-
-
-
-## Update a publication
-
-
-
-## Manage file publication
-
-
-
-
-# Markdown extensions
-
-
-
-
-## SmartyPants
-
-
-
-
-## KaTeX
-
-
-
-## UML diagrams
-
-```
+![private](https://github.com/ImaneKABKAB/formation-eazytraining-devops-Kubernetes/blob/main/mini-project/image/word5.PNG)
